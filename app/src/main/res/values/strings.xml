@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Quiz game</string>
+    <string name="new_game">Nowa gra</string>
+    <string name="quiz">QUIZ</string>
+    <string name="game_settings">Ustawienia gry</string>
+    <string name="num_players">Liczba graczy: </string>
+    <string name="edit_players">Edytuj graczy</string>
+    <string name="accept">Akceptuj</string>
+    <string name="decline">Odrzuć</string>
+    <string name="reset_players_name">Resetuj nazwy</string>
+    <string name="start_game">Rozpocznij Quiz</string>
+
+
+
+
+
 </resources>
