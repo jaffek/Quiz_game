@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.affek.quizgame.R
+import com.affek.quizgame.navigation.QuestionScreenNavArgs
 import com.affek.quizgame.presentation.destinations.GameSettingsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -93,7 +94,8 @@ fun GameSettingsScreen(
                     .padding(5.dp),
                 text = stringResource(id = R.string.num_players),
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
+                fontSize = 18.sp
             )
 
                 PlayerNumList(
@@ -142,6 +144,22 @@ fun GameSettingsScreen(
             ) {
                 Text(text = stringResource(id = R.string.edit_players))
             }
+            Divider(color = MaterialTheme.colorScheme.onSecondary, thickness = 1.dp)
+            Text(
+                modifier = Modifier
+                    .padding(5.dp),
+                text = stringResource(id = R.string.number_of_questions),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary,
+                fontSize = 18.sp
+            )
+
+            PlayerNumList(
+                expandedState = state.numOfQuestionsExpanded,
+                chosenValue = state.numOfQuestions,
+                changeExpand = { viewModel.onEvent(GameSettingsEvent.ExpandNumOfQuestionsList) },
+                chooseNumOfPlayers = { viewModel.onEvent(GameSettingsEvent.SelectNumOfQuestions(it)) })
+
             Spacer(
                 modifier = Modifier.weight(1f)
             )
@@ -149,7 +167,11 @@ fun GameSettingsScreen(
                 modifier = Modifier
                     .padding(10.dp)
                     .align(Alignment.CenterHorizontally),
-                onClick = { // TODO
+                onClick = { navigator.navigate(
+                    com.affek.quizgame.presentation.destinations.QuestionScreenDestination(
+                        QuestionScreenNavArgs(listOfPlayers = state.listOfPlayers, numOfQuestions = state.numOfQuestions)
+                    )
+                )
                      },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent,

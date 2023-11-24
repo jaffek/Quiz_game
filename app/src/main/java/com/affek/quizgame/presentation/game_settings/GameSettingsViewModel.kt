@@ -93,6 +93,16 @@ class GameSettingsViewModel @Inject constructor() : ViewModel() {
                     playersEmptyState = playersEmptyStateTemp.toTypedArray()
                 )
             }
+            is GameSettingsEvent.SelectNumOfQuestions -> {
+                _state.value = _state.value.copy(
+                    numOfQuestions = event.number
+                )
+            }
+            is GameSettingsEvent.ExpandNumOfQuestionsList -> {
+                _state.value = _state.value.copy(
+                    numOfQuestionsExpanded = !_state.value.numOfQuestionsExpanded
+                )
+            }
         }
     }
 }

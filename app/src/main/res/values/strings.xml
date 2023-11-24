@@ -9,6 +9,8 @@
     <string name="decline">Odrzuć</string>
     <string name="reset_players_name">Resetuj nazwy</string>
     <string name="start_game">Rozpocznij Quiz</string>
+    <string name="number_of_questions">Liczba pytań dla każdego gracza:</string>
+
 
 
 
